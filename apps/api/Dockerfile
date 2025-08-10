@@ -1,12 +1,14 @@
 # ---- Build stage ----
-FROM gradle:8.8-jdk21-alpine AS build
+FROM maven:3.9-eclipse-temurin-21 AS build
 WORKDIR /app
-COPY . .
-RUN gradle bootJar --no-daemon
+COPY pom.xml .
+RUN mvn -q -e -B -DskipTests dependency:go-offline
+COPY src ./src
+RUN mvn -q -e -B -DskipTests package
 
 # ---- Run stage ----
 FROM eclipse-temurin:21-jre-alpine
 WORKDIR /app
-COPY --from=build /app/build/libs/*.jar app.jar
+COPY --from=build /app/target/*.jar app.jar
 EXPOSE 8080
 ENTRYPOINT ["java","-jar","/app/app.jar"]

@@ -57,3 +57,9 @@ To generate a TypeScript client (local tooling required):
 npm i -g @openapitools/openapi-generator-cli
 openapi-generator-cli generate -i http://localhost:8080/v3/api-docs -g typescript-fetch -o apps/web/src/api
 ```
+
+
+## Backend avec Maven (au lieu de Gradle)
+- Dev : `mvn -f apps/api/pom.xml spring-boot:run`
+- Build : `mvn -f apps/api/pom.xml -DskipTests package`
+- Dockerfile backend : basé sur l'image `maven:3.9-eclipse-temurin-21` (multi-stage)

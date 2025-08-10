@@ -42,8 +42,8 @@ jobs:
 
       - name: Build backend
         working-directory: apps/api
-        run: gradle bootJar
+        run: mvn -q -B -DskipTests package
 
       - name: Test backend
         working-directory: apps/api
-        run: gradle test
+        run: mvn -q -B test
