@@ -1,0 +1,1 @@
+# fullstack-springboot-nextjs-monorepo
