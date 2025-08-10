@@ -18,6 +18,11 @@ public class TodoController {
         return service.all();
     }
 
+    @GetMapping("/{id}")
+    public Todo getById(@PathVariable Long id) {
+        return service.getById(id);
+    }
+
     @PostMapping
     public Todo create(@RequestBody Todo payload) {
         return service.create(payload);
@@ -26,5 +31,10 @@ public class TodoController {
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
         service.delete(id);
+    }
+
+    @PutMapping("/{id}")
+    public Todo update(@PathVariable Long id, @RequestBody Todo payload) {
+        return service.update(id, payload);
     }
 }
