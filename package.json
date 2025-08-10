@@ -1,0 +1,20 @@
+{
+  "name": "fullstack-springboot-nextjs-monorepo",
+  "private": true,
+  "packageManager": "pnpm@9",
+  "scripts": {
+    "dev": "concurrently -n api,web -c auto \"cd apps/api && gradle bootRun\" \"pnpm --dir apps/web dev\"",
+    "build": "pnpm --dir apps/web build && cd apps/api && gradle bootJar",
+    "start:web": "pnpm --dir apps/web start",
+    "format": "prettier --write .",
+    "lint": "pnpm --dir apps/web lint",
+    "typecheck": "pnpm --dir apps/web typecheck"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "prettier": "^3.3.3"
+  },
+  "workspaces": [
+    "apps/*"
+  ]
+}
