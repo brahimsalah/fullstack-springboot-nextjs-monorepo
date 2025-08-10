@@ -14,8 +14,18 @@ export default async function Home() {
   return (
     <main style={{ padding: 24 }}>
       <h1>Spring Boot + Next.js</h1>
-      <p>API health: <strong>{String(health.ok)}</strong></p>
-      <p>Env <code>NEXT_PUBLIC_API_URL</code>: {process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8080"}</p>
+      <p>
+        API health: <strong>{String(health.ok)}</strong>
+      </p>
+      <p>
+        Env <code>NEXT_PUBLIC_API_URL</code>:{" "}
+        {process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8080"}
+      </p>
+      <p style={{ marginTop: 16 }}>
+        <a href="/todos" style={{ textDecoration: "underline" }}>
+          ➡️ Aller à la liste des todos
+        </a>
+      </p>
     </main>
   );
 }
