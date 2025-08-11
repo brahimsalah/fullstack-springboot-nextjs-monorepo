@@ -3,7 +3,7 @@
   "private": true,
   "packageManager": "pnpm@9",
   "scripts": {
-    "dev": "concurrently -n api,web -c auto \"mvn -q -f apps/api/pom.xml spring-boot:run\" \"pnpm --dir apps/web dev\"",
+    "dev": "concurrently -n api,web -c auto \"mvn -q -f apps/api/pom.xml spring-boot:run\" \"cd apps/web && npm run dev\"",
     "build": "pnpm --dir apps/web build && mvn -q -f apps/api/pom.xml -DskipTests package",
     "start:web": "pnpm --dir apps/web start",
     "format": "prettier --write .",

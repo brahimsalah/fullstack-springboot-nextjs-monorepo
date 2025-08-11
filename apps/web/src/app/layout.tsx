@@ -1,3 +1,5 @@
+import './globals.css'
+
 export const metadata = {
   title: "Fullstack Monorepo",
   description: "Spring Boot + Next.js starter",
@@ -6,7 +8,7 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="fr">
-      <body style={{ margin: 0, fontFamily: "system-ui, sans-serif" }}>{children}</body>
+      <body className="m-0 font-sans">{children}</body>
     </html>
   );
 }
