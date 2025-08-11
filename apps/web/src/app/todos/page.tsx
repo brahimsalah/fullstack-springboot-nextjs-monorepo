@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 type Todo = {
   id: number;
@@ -17,6 +18,7 @@ export default function TodosPage() {
   const [title, setTitle] = useState("");
   const [loading, setLoading] = useState(true);
   const [err, setErr] = useState<string | null>(null);
+  const router = useRouter();
 
   async function load() {
     try {
@@ -65,85 +67,101 @@ export default function TodosPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return (
-    <main style={{ padding: 24, maxWidth: 720, margin: "0 auto" }}>
-      <h1 style={{ marginBottom: 12 }}>Todos</h1>
+    return (
+      <main style={{ padding: 24, maxWidth: 720, margin: "0 auto" }}>
+        <h1 style={{ marginBottom: 12 }}>Todos</h1>
 
-      <form onSubmit={createTodo} style={{ display: "flex", gap: 8, marginBottom: 16 }}>
-        <input
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          placeholder="Ajouter une tâche…"
-          style={{
-            flex: 1,
-            padding: 10,
-            borderRadius: 8,
-            border: "1px solid #ccc",
-          }}
-        />
-        <button
-          type="submit"
-          style={{
-            padding: "10px 14px",
-            borderRadius: 8,
-            border: "1px solid #222",
-            background: "#111",
-            color: "#fff",
-            cursor: "pointer",
-          }}
-        >
-          Ajouter
-        </button>
-      </form>
+        <form onSubmit={createTodo} style={{ display: "flex", gap: 8, marginBottom: 16 }}>
+          <input
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            placeholder="Ajouter une tâche…"
+            style={{
+              flex: 1,
+              padding: 10,
+              borderRadius: 8,
+              border: "1px solid #ccc",
+            }}
+          />
+          <button
+            type="submit"
+            style={{
+              padding: "10px 14px",
+              borderRadius: 8,
+              border: "1px solid #222",
+              background: "#111",
+              color: "#fff",
+              cursor: "pointer",
+            }}
+          >
+            Ajouter
+          </button>
+        </form>
 
-      {err && (
-        <p style={{ color: "crimson", marginBottom: 12 }}>
-          {err}
-        </p>
-      )}
+        {err && (
+          <p style={{ color: "crimson", marginBottom: 12 }}>
+            {err}
+          </p>
+        )}
 
-      {loading ? (
-        <p>Chargement…</p>
-      ) : todos.length === 0 ? (
-        <p>Aucune tâche pour l’instant.</p>
-      ) : (
-        <ul style={{ listStyle: "none", padding: 0, display: "grid", gap: 8 }}>
-          {todos.map((t) => (
-            <li
-              key={t.id}
-              style={{
-                padding: 12,
-                border: "1px solid #e5e5e5",
-                borderRadius: 10,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                gap: 12,
-              }}
-            >
-              <div>
-                <div style={{ fontWeight: 600 }}>{t.title}</div>
-                <div style={{ fontSize: 12, color: "#666" }}>
-                  Créé le {new Date(t.createdAt).toLocaleString()}
-                </div>
-              </div>
-              <button
-                onClick={() => deleteTodo(t.id)}
+        {loading ? (
+          <p>Chargement…</p>
+        ) : todos.length === 0 ? (
+          <p>Aucune tâche pour l’instant.</p>
+        ) : (
+          <ul style={{ listStyle: "none", padding: 0, display: "grid", gap: 8 }}>
+            {todos.map((t) => (
+              <li
+                key={t.id}
                 style={{
-                  padding: "6px 10px",
-                  borderRadius: 8,
-                  border: "1px solid #c00",
-                  background: "#fff",
-                  color: "#c00",
-                  cursor: "pointer",
+                  padding: 12,
+                  border: "1px solid #e5e5e5",
+                  borderRadius: 10,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  gap: 12,
                 }}
               >
-                Supprimer
-              </button>
-            </li>
-          ))}
-        </ul>
-      )}
-    </main>
-  );
+                <div>
+                  <div style={{ fontWeight: 600 }}>{t.title}</div>
+                  <div style={{ fontSize: 12, color: "#666" }}>
+                    Créé le {new Date(t.createdAt).toLocaleString()}
+                  </div>
+                </div>
+                <div style={{ display: "flex", gap: 8 }}>
+                  <button
+                    onClick={() => router.push(`/todos/edit?id=${t.id}`)}
+                    style={{
+                      padding: "6px 10px",
+                      borderRadius: 8,
+                      border: "1px solid #0070f3",
+                      background: "#fff",
+                      color: "#0070f3",
+                      cursor: "pointer",
+                    }}
+                  >
+                    Éditer
+                  </button>
+                  <button
+                    onClick={() => deleteTodo(t.id)}
+                    style={{
+                      padding: "6px 10px",
+                      borderRadius: 8,
+                      border: "1px solid #c00",
+                      background: "#fff",
+                      color: "#c00",
+                      cursor: "pointer",
+                    }}
+                  >
+                    Supprimer
+                  </button>
+                </div>
+              </li>
+            ))}
+          </ul>
+        )}
+      </main>
+    );
 }
+
