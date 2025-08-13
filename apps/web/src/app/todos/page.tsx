@@ -70,8 +70,8 @@ export default function TodosPage() {
   return (
     <main className="min-h-screen bg-gradient-to-br from-sand to-teal py-12 px-4">
       <div className="max-w-2xl mx-auto">
-        <h1 className="text-4xl font-extrabold text-gray-800 mb-8 flex items-center gap-2">
-          <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-3-3v6m9 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+        <h1 className="text-4xl font-extrabold text-ink mb-8 flex items-center gap-2">
+          <svg className="w-8 h-8 text-teal" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-3-3v6m9 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
           Mes Todos
         </h1>
         <form onSubmit={createTodo} className="flex gap-3 mb-8">
@@ -79,52 +79,52 @@ export default function TodosPage() {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             placeholder="Ajouter une tâche…"
-            className="flex-1 px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-100 bg-white shadow-sm outline-none transition"
+            className="flex-1 px-4 py-3 rounded-lg border border-sand focus:border-teal focus:ring-2 focus:ring-teal/20 bg-white shadow-sm outline-none transition text-ink placeholder:text-ink/50"
           />
           <button
             type="submit"
-            className="px-6 py-3 rounded-lg bg-blue-600 text-white font-semibold shadow hover:bg-blue-700 transition"
+            className="px-6 py-3 rounded-lg bg-teal text-white font-semibold shadow hover:bg-orange transition"
           >
             Ajouter
           </button>
         </form>
 
         {err && (
-          <div className="mb-6 p-3 rounded bg-red-100 text-red-700 border border-red-200 animate-pulse">{err}</div>
+          <div className="mb-6 p-3 rounded bg-coral/10 text-coral border border-coral/30 animate-pulse">{err}</div>
         )}
 
         {loading ? (
           <div className="flex items-center justify-center min-h-[30vh]">
-            <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-blue-600"></div>
+            <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-teal"></div>
           </div>
         ) : todos.length === 0 ? (
-          <div className="text-center text-gray-500">Aucune tâche pour l’instant.</div>
+          <div className="text-center text-ink/60">Aucune tâche pour l’instant.</div>
         ) : (
           <ul className="grid gap-5">
             {todos.map((t) => (
               <li
                 key={t.id}
-                className="bg-white/90 border border-gray-100 rounded-xl shadow flex items-center justify-between gap-4 px-6 py-5 hover:shadow-lg transition"
+                className="bg-white/90 border border-sand rounded-xl shadow flex items-center justify-between gap-4 px-6 py-5 hover:shadow-lg transition"
               >
                 <div>
-                  <div className="font-bold text-lg text-gray-800 flex items-center gap-2">
-                    <span className="inline-block w-2 h-2 rounded-full bg-blue-400"></span>
+                  <div className="font-bold text-lg text-ink flex items-center gap-2">
+                    <span className="inline-block w-2 h-2 rounded-full bg-orange"></span>
                     {t.title}
                   </div>
-                  <div className="text-xs text-gray-500 mt-1">
+                  <div className="text-xs text-ink/60 mt-1">
                     Créé le {new Date(t.createdAt).toLocaleString()}
                   </div>
                 </div>
                 <div className="flex gap-2">
                   <button
                     onClick={() => router.push(`/todos/edit?id=${t.id}`)}
-                    className="px-4 py-2 rounded-lg border border-blue-500 text-blue-600 bg-white hover:bg-blue-50 font-medium transition"
+                    className="px-4 py-2 rounded-lg border border-teal text-teal bg-white hover:bg-teal/10 font-medium transition"
                   >
                     Éditer
                   </button>
                   <button
                     onClick={() => deleteTodo(t.id)}
-                    className="px-4 py-2 rounded-lg border border-red-400 text-red-600 bg-white hover:bg-red-50 font-medium transition"
+                    className="px-4 py-2 rounded-lg border border-coral text-coral bg-white hover:bg-coral/10 font-medium transition"
                   >
                     Supprimer
                   </button>
