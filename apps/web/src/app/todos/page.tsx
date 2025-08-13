@@ -67,92 +67,64 @@ export default function TodosPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-    return (
-      <main style={{ padding: 24, maxWidth: 720, margin: "0 auto" }}>
-        <h1 style={{ marginBottom: 12 }}>Todos</h1>
-
-        <form onSubmit={createTodo} style={{ display: "flex", gap: 8, marginBottom: 16 }}>
+  return (
+    <main className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 py-12 px-4">
+      <div className="max-w-2xl mx-auto">
+        <h1 className="text-4xl font-extrabold text-gray-800 mb-8 flex items-center gap-2">
+          <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-3-3v6m9 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          Mes Todos
+        </h1>
+        <form onSubmit={createTodo} className="flex gap-3 mb-8">
           <input
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             placeholder="Ajouter une tâche…"
-            style={{
-              flex: 1,
-              padding: 10,
-              borderRadius: 8,
-              border: "1px solid #ccc",
-            }}
+            className="flex-1 px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-100 bg-white shadow-sm outline-none transition"
           />
           <button
             type="submit"
-            style={{
-              padding: "10px 14px",
-              borderRadius: 8,
-              border: "1px solid #222",
-              background: "#111",
-              color: "#fff",
-              cursor: "pointer",
-            }}
+            className="px-6 py-3 rounded-lg bg-blue-600 text-white font-semibold shadow hover:bg-blue-700 transition"
           >
             Ajouter
           </button>
         </form>
 
         {err && (
-          <p style={{ color: "crimson", marginBottom: 12 }}>
-            {err}
-          </p>
+          <div className="mb-6 p-3 rounded bg-red-100 text-red-700 border border-red-200 animate-pulse">{err}</div>
         )}
 
         {loading ? (
-          <p>Chargement…</p>
+          <div className="flex items-center justify-center min-h-[30vh]">
+            <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-blue-600"></div>
+          </div>
         ) : todos.length === 0 ? (
-          <p>Aucune tâche pour l’instant.</p>
+          <div className="text-center text-gray-500">Aucune tâche pour l’instant.</div>
         ) : (
-          <ul style={{ listStyle: "none", padding: 0, display: "grid", gap: 8 }}>
+          <ul className="grid gap-5">
             {todos.map((t) => (
               <li
                 key={t.id}
-                style={{
-                  padding: 12,
-                  border: "1px solid #e5e5e5",
-                  borderRadius: 10,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  gap: 12,
-                }}
+                className="bg-white/90 border border-gray-100 rounded-xl shadow flex items-center justify-between gap-4 px-6 py-5 hover:shadow-lg transition"
               >
                 <div>
-                  <div style={{ fontWeight: 600 }}>{t.title}</div>
-                  <div style={{ fontSize: 12, color: "#666" }}>
+                  <div className="font-bold text-lg text-gray-800 flex items-center gap-2">
+                    <span className="inline-block w-2 h-2 rounded-full bg-blue-400"></span>
+                    {t.title}
+                  </div>
+                  <div className="text-xs text-gray-500 mt-1">
                     Créé le {new Date(t.createdAt).toLocaleString()}
                   </div>
                 </div>
-                <div style={{ display: "flex", gap: 8 }}>
+                <div className="flex gap-2">
                   <button
                     onClick={() => router.push(`/todos/edit?id=${t.id}`)}
-                    style={{
-                      padding: "6px 10px",
-                      borderRadius: 8,
-                      border: "1px solid #0070f3",
-                      background: "#fff",
-                      color: "#0070f3",
-                      cursor: "pointer",
-                    }}
+                    className="px-4 py-2 rounded-lg border border-blue-500 text-blue-600 bg-white hover:bg-blue-50 font-medium transition"
                   >
                     Éditer
                   </button>
                   <button
                     onClick={() => deleteTodo(t.id)}
-                    style={{
-                      padding: "6px 10px",
-                      borderRadius: 8,
-                      border: "1px solid #c00",
-                      background: "#fff",
-                      color: "#c00",
-                      cursor: "pointer",
-                    }}
+                    className="px-4 py-2 rounded-lg border border-red-400 text-red-600 bg-white hover:bg-red-50 font-medium transition"
                   >
                     Supprimer
                   </button>
@@ -161,7 +133,8 @@ export default function TodosPage() {
             ))}
           </ul>
         )}
-      </main>
-    );
+      </div>
+    </main>
+  );
 }
 
