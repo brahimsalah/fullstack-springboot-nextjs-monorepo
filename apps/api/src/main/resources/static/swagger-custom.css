@@ -1,0 +1,26 @@
+/* Topbar */
+.swagger-ui .topbar { background-color: #bce613 !important; }
+.swagger-ui .topbar a, .swagger-ui .topbar .download-url-wrapper .select-label {
+  color: #ffffff !important;
+}
+
+/* Boutons principaux */
+.swagger-ui .btn.authorize, .swagger-ui .opblock-summary-control {
+  background-color: #2A9D8F !important; color: #fff !important;
+  border-color: #2A9D8F !important;
+}
+
+/* Accents & liens */
+.swagger-ui a, .swagger-ui .opblock-summary-path,
+.swagger-ui .model-title, .swagger-ui .opblock-tag {
+  color: #E76F51 !important;
+}
+
+/* Surbrillance */
+.swagger-ui .opblock {
+  border-color: #F4A261 !important;
+}
+.swagger-ui .response-col_description__inner div.markdown,
+.swagger-ui .markdown p {
+  color: #264653 !important;
+}
