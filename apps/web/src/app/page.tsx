@@ -26,6 +26,13 @@ export default async function Home() {
           ➡️ Aller à la liste des todos
         </a>
       </p>
+
+      <div className="p-4 rounded-lg border border-orange/40 bg-sand/20 text-ink">
+  Bloc palette OK
+</div>
+<button className="mt-3 px-4 py-2 rounded-lg bg-teal hover:bg-teal/90 text-white">
+  Bouton teal
+</button>
     </main>
   );
 }

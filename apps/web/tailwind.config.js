@@ -6,7 +6,16 @@ module.exports = {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    extend: {},
+    extend: {     
+       colors: {
+         ink:   "rgb(var(--ink) / <alpha-value>)",
+        teal:  "rgb(var(--teal) / <alpha-value>)",
+        sand:  "rgb(var(--sand) / <alpha-value>)",
+        orange:"rgb(var(--orange) / <alpha-value>)",
+        coral: "rgb(var(--coral) / <alpha-value>)",
+        primary: "rgb(var(--teal) / <alpha-value>)", // alias pratique
+      },
+    },
   },
   plugins: [],
 }

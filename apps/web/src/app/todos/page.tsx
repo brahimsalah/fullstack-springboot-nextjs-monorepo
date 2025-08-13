@@ -68,7 +68,7 @@ export default function TodosPage() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 py-12 px-4">
+    <main className="min-h-screen bg-gradient-to-br from-sand to-teal py-12 px-4">
       <div className="max-w-2xl mx-auto">
         <h1 className="text-4xl font-extrabold text-gray-800 mb-8 flex items-center gap-2">
           <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-3-3v6m9 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>

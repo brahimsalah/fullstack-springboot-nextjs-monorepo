@@ -1,0 +1,15 @@
+:root {
+  /* HEX (optionnel pour usage CSS classique) */
+  --c-ink:   #264653;
+  --c-teal:  #2A9D8F;
+  --c-sand:  #E9C46A;
+  --c-orange:#F4A261;
+  --c-coral: #E76F51;
+
+  /* RGB pour Tailwind (séparées par des espaces) */
+  --ink:    38 70 83;    /* #264653 */
+  --teal:   42 157 143;  /* #2A9D8F */
+  --sand:   233 196 106; /* #E9C46A */
+  --orange: 244 162 97;  /* #F4A261 */
+  --coral:  231 111 81;  /* #E76F51 */
+}
