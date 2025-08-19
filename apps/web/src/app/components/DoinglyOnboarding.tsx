@@ -25,7 +25,13 @@ function LogoMark() {
   return (
     <div className="grid h-16 w-16 place-items-center rounded-2xl bg-primary">
       <svg width="32" height="32" viewBox="0 0 24 24" fill="none" aria-hidden>
-        <path d="M6 12l3 3 9-9" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+        <path
+          d="M6 12l3 3 9-9"
+          stroke="white"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
       </svg>
     </div>
   );

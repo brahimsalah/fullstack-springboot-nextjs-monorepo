@@ -1,4 +1,4 @@
-import './globals.css';
+import "./globals.css";
 import RootWithSplash from "./components/RootWithSplash";
 
 export const metadata = {
@@ -6,12 +6,14 @@ export const metadata = {
   description: "Spring Boot + Next.js starter",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="fr">
-      <body className="m-0 font-sans">
-        {children}
-      </body>
+      <body className="m-0 font-sans">{children}</body>
     </html>
   );
 }

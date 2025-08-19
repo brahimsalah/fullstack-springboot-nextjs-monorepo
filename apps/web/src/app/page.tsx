@@ -23,12 +23,16 @@ export default function Home() {
 
   return (
     <RootWithSplash durationMs={2500} skippable={true}>
-      <main style={{ padding: 24 }} className="min-h-[100svh] grid place-items-center bg-teal p-6">
+      <main
+        style={{ padding: 24 }}
+        className="min-h-[100svh] grid place-items-center bg-teal p-6"
+      >
         <div className="bg-transparent text-white p-4 rounded-none shadow-none ring-0 outline-none">
           <h1>Spring Boot banckend with Next.js frontend</h1>
           <p>
             {" "}
-            API health: <strong>{health ? String(health.ok) : "checking..."}</strong>{" "}
+            API health:{" "}
+            <strong>{health ? String(health.ok) : "checking..."}</strong>{" "}
           </p>
           <p>
             Env <code>NEXT_PUBLIC_API_URL</code>:{" "}

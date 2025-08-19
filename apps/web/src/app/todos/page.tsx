@@ -9,8 +9,7 @@ type Todo = {
   createdAt: string;
 };
 
-const API_BASE =
-  process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8080";
+const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8080";
 
 export default function Home() {
   const [todos, setTodos] = useState<Todo[]>([]);
@@ -54,7 +53,7 @@ export default function Home() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const done = todos.filter(t => t.done).length;
+  const done = todos.filter((t) => t.done).length;
   const pending = todos.length - done;
 
   return (
@@ -62,13 +61,15 @@ export default function Home() {
       <div className="w-full max-w-xl text-white rounded-lg shadow-none ring-0">
         <h1 className="text-3xl font-semibold mb-2">Ma Todo List</h1>
         <p className="text-white/90 mb-6">
-          {loading ? "Chargement…" : `Aujourd’hui : ${todos.length} tâche(s) • ✅ ${done} • ⏳ ${pending}`}
+          {loading
+            ? "Chargement…"
+            : `Aujourd’hui : ${todos.length} tâche(s) • ✅ ${done} • ⏳ ${pending}`}
         </p>
 
         <form onSubmit={createTodo} className="flex gap-2 mb-6">
           <input
             value={title}
-            onChange={e => setTitle(e.target.value)}
+            onChange={(e) => setTitle(e.target.value)}
             placeholder="Ajouter une tâche…"
             className="flex-1 rounded-md px-3 py-2 text-ink placeholder:text-ink/60 focus:outline-none"
           />
@@ -90,12 +91,14 @@ export default function Home() {
           </div>
         ) : (
           <ul className="space-y-2">
-            {todos.slice(0, 5).map(t => (
+            {todos.slice(0, 5).map((t) => (
               <li
                 key={t.id}
                 className="rounded-md bg-white/10 backdrop-blur p-3 flex items-center justify-between"
               >
-                <span className={t.done ? "line-through opacity-70" : ""}>{t.title}</span>
+                <span className={t.done ? "line-through opacity-70" : ""}>
+                  {t.title}
+                </span>
                 <span className={t.done ? "text-sand" : "text-coral"}>
                   {t.done ? "✅" : "⏳"}
                 </span>
